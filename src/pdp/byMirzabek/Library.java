@@ -16,13 +16,34 @@ public class Library {
     }
 
     public void viewBooks() {
-        if (bookCount == 0){
+//        if (bookCount == 0){
+//            System.out.println("The library has no books!");
+//        } else {
+//            for (int i = 0; i < bookCount; i++){
+//                System.out.println(books[i].getISBN());
+//            }
+//        }
+        if (bookCount == 0) {
             System.out.println("The library has no books!");
         } else {
-            for (int i = 0; i < bookCount; i++){
-                System.out.println(books[i].getISBN());
+            for (int i = 0; i < bookCount; i++) {
+                if (books[i] instanceof RegularBook) {
+                    if (!((RegularBook) books[i]).isBorrowed()) {
+                        System.out.println(books[i].getISBN());
+                    }
+                } else {
+                    String referenceBookISBN = books[i].getISBN();
+                    System.out.println(referenceBookISBN);
+                }
             }
         }
+//        for (int i = 0; i < bookCount; i++) {
+//            if (books[i] instanceof RegularBook) {
+//                if (!((RegularBook) books[i]).isBorrowed()) {
+//                    System.out.println(books[i].getISBN());
+//                }
+//            }
+//        }
     }
 
     public void borrowBook(String ISBN) {
